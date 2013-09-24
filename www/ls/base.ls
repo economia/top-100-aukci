@@ -45,8 +45,8 @@ rowAssigner = (it, index) ->
     technik   : it.technika
     rozmer    : it.rozmer
     dum       : it.dum
-    width     : +it.sirka
-    height    : +it.vyska
+    width     : +it.vyska
+    height    : +it.sirka
     kategorie : kategorie[it.kategorie]
     date      : new Date it.datum
 (err, paintings) <~ d3.csv "../data/data.csv", rowAssigner
