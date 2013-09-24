@@ -1,3 +1,6 @@
+return if not Modernizr.svg
+d3.selectAll \.hiddenIfIncapableBrowser .classed \hiddenIfIncapableBrowser no
+d3.selectAll \.fallback .remove!
 sidebar = d3.selectAll \#sidebar
 backButton = sidebar.select "a.backButton"
     ..on \click -> sidebar.classed \active no
