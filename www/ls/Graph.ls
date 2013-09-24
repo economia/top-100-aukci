@@ -2,7 +2,7 @@ monthsHuman = <[leden únor březen duben květen červen červenec srpen zář�
 
 window.Graph = class Graph
     (@parentSelector, @datapoints, {width=970_px, height=600_px}={}) ->
-        @margin = [110 10 20 34] # trbl
+        @margin = [10 10 20 34] # trbl
         @width = width - @margin.1 - @margin.3
         @height = height - @margin.0 - @margin.2
         @svg = d3.select parentSelector .append \svg
@@ -26,7 +26,7 @@ window.Graph = class Graph
         @scale_x = d3.time.scale!
             ..domain [min_date, max_date]
             ..range [0 @width]
-        @scale_y = d3.scale.linear!
+        @scale_y = d3.scale.log!
             ..domain [min_price, max_price]
             ..range [@height, 0]
 
