@@ -16,8 +16,8 @@ rowAssigner = (it, index) ->
     height  : +it.vyska
     date    : new Date it.datum
 (err, paintings) <~ d3.csv "../data/data.csv", rowAssigner
-width = 650_px
-height = 600_px
+width = 970_px
+height = 680_px
 paintings .= filter -> it.date.getFullYear! > 2003
 graph = new Graph \#content paintings, { width, height }
     ..draw!

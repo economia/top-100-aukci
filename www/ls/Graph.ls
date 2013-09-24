@@ -30,21 +30,28 @@ window.Graph = class Graph
             ..domain [min_price, max_price]
             ..range [@height, 0]
 
-        @datapointSymbol = d3.svg.symbol!
-            ..size 45
-
     draw: ->
         @drawDatapointSymbols!
         @drawAxes!
 
-    drawDatapointSymbols: (scaleIsExpanding) ->
-        selection = @drawing.selectAll \path
+    drawDatapointSymbols: ->
+        rectScale     = 0.12
+        getRectWidth  = (d) ~> d.width * rectScale
+        getRectHeight = (d) ~> d.height * rectScale
+
+        selection = @drawing.selectAll \rect
             .data @datapoints
-            .enter!append \path
+            .enter!append \rect
+                ..attr \x ~>
+                    x = @scale_x it.date
+                    x - 0.5 * getRectWidth it
+                ..attr \y ~>
+                    y = @scale_y it.price
+                    y - 0.5 * getRectHeight it
+                ..attr \width getRectWidth
+                ..attr \height getRectHeight
                 ..attr \class (line) -> "symbol notHiding #{line.partyId} #{line.agencyId}"
                 ..attr \opacity 1
-                ..attr \d (pt) ~> @datapointSymbol!
-                ..attr \transform (pt) ~> "translate(#{@scale_x pt.date}, #{@scale_y pt.price}) scale(1)"
 
     drawAxes: ->
         @drawYAxis!
