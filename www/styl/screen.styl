@@ -7,6 +7,13 @@ body
         rect
             stroke #666
             stroke-width 1px
+            &:hover
+                fill HNLink
+                stroke HNBlue
+                cursor pointer
+            &:active
+                fill lighten(HNLink, 20%)
+                stroke lighten(HNBlue, 20%)
         .axis
             path
                 stroke #333
