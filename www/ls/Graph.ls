@@ -38,7 +38,7 @@ window.Graph = class Graph
         @drawAxes!
 
     drawDatapointSymbols: ->
-        rectScale     = 0.12
+        rectScale     = 0.23
         getRectWidth  = (d) ~> d.width * rectScale
         getRectHeight = (d) ~> d.height * rectScale
 
