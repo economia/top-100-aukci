@@ -9,11 +9,14 @@ rowAssigner = (it, index) ->
     autor   : it.autor
     nazev   : it.nazev
     rok     : it.rok
+    price   : +it.cena
     technik : it.technika
     rozmer  : it.rozmer
     width   : +it.sirka
     height  : +it.vyska
     date    : new Date it.datum
-(err, json) <~ d3.csv "../data/data.csv", rowAssigner
-console.log err
-console.log json
+(err, paintings) <~ d3.csv "../data/data.csv", rowAssigner
+width = 650_px
+height = 600_px
+graph = new Graph \#content paintings, { width, height }
+    ..draw!
