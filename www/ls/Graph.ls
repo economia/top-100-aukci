@@ -59,6 +59,8 @@ window.Graph = class Graph
                 ..attr \height getRectHeight
                 ..attr \class (line) -> "symbol notHiding #{line.partyId} #{line.agencyId}"
                 ..attr \opacity 1
+                ..on \click window.drawSidebar
+
 
     drawAxes: ->
         @drawYAxis!
