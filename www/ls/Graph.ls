@@ -1,7 +1,7 @@
 monthsHuman = <[leden únor březen duben květen červen červenec srpen září říjen listopad prosinec]>
 
 window.Graph = class Graph
-    (@parentSelector, @datapoints, {width=970_px, height=600_px}={}) ->
+    (@parentSelector, @datapoints, @categories, {width=970_px, height=600_px}={}) ->
         @margin = [10 10 20 34] # trbl
         @width = width - @margin.1 - @margin.3
         @height = height - @margin.0 - @margin.2
@@ -29,6 +29,9 @@ window.Graph = class Graph
         @scale_y = d3.scale.log!
             ..domain [min_price, max_price]
             ..range [@height, 0]
+        @fillColor = d3.scale.ordinal!
+            ..domain @categories
+            ..range <[ #E41A1C #377EB8 #4DAF4A #984EA3 #FF7F00 ]>
 
     draw: ->
         @drawDatapointSymbols!
@@ -48,6 +51,8 @@ window.Graph = class Graph
                 ..attr \y ~>
                     y = @scale_y it.price
                     y - 0.5 * getRectHeight it
+                ..attr \fill ~>
+                    @fillColor it.kategorie
                 ..attr \width getRectWidth
                 ..attr \height getRectHeight
                 ..attr \class (line) -> "symbol notHiding #{line.partyId} #{line.agencyId}"
