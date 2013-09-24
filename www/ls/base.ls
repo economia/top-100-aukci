@@ -54,7 +54,6 @@ rowAssigner = (it, index) ->
     kategorie : kategorie[it.kategorie]
     date      : new Date it.datum
 (err, paintings) <~ d3.csv "../data/data.csv", rowAssigner
-console.log paintings
 width = 970_px
 height = 680_px
 paintings .= filter -> it.date.getFullYear! > 2003
