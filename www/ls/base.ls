@@ -1,6 +1,7 @@
 sidebar = d3.selectAll \#sidebar
+backButton = sidebar.select "a.backButton"
+    ..on \click -> sidebar.classed \active no
 window.drawSidebar = (item) ->
-    console.log 'foo'
     sidebar.classed \active yes
     sidebar.selectAll ".content" .remove!
     sidebar.selectAll ".content"
