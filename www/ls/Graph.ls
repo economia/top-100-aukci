@@ -2,7 +2,7 @@ monthsHuman = <[leden únor březen duben květen červen červenec srpen zář�
 
 window.Graph = class Graph
     (@parentSelector, @datapoints, @categories, {width=970_px, height=600_px}={}) ->
-        @margin = [10 10 20 34] # trbl
+        @margin = [10 10 20 80] # trbl
         @width = width - @margin.1 - @margin.3
         @height = height - @margin.0 - @margin.2
         @svg = d3.select parentSelector .append \svg
@@ -18,9 +18,11 @@ window.Graph = class Graph
 
         dates = @datapoints.map (.date)
         min_date = Math.min ...dates
+        min_date -= 1e10
         max_date = Math.max ...dates
         prices = @datapoints.map (.price)
         min_price = Math.min ...prices
+        min_price -= 4e5
         max_price = Math.max ...prices
 
         @scale_x = d3.time.scale!
@@ -80,14 +82,14 @@ window.Graph = class Graph
             ..scale @scale_y
             ..tickSize @width
             ..outerTickSize 0
-            ..tickValues [1 3 5 10 15 20 30 40]
-            ..tickFormat -> "#it%"
+            ..tickFormat -> "#{Math.round it / 1e6} 000 000"
             ..orient \right
         @yAxisGroup
             ..call yAxis
             ..selectAll "text"
-                ..attr \x -30
+                ..attr \x -10
                 ..attr \dy 5
+                ..style \text-anchor \end
             ..selectAll "line"
                 ..filter( -> it % 10)
                     ..classed \minor yes
