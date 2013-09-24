@@ -20,6 +20,8 @@ rowAssigner = (it, index) ->
 width = 970_px
 height = 680_px
 paintings .= filter -> it.date.getFullYear! > 2003
+paintings .= sort (a, b) ->
+    b.width * b.height - a.width * a.height
 category_values = for id, name of kategorie
     name
 graph = new Graph \#content paintings, category_values, { width, height }
