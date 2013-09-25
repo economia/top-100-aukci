@@ -20,7 +20,7 @@ window.drawSidebar = (item) ->
             ..append \h3
                 ..html -> "#{it.technika}, #{it.rozmer}"
             ..append \h4
-                ..html -> "#{formatPrice it.price} Kč, #{it.dum}, #{formatDate it.date}"
+                ..html -> "#{formatPrice it.price} Kč, #{it.id}. nejdražší<br />#{it.dum}, #{formatDate it.date}"
 
 formatDate = ->
     "#{it.getDate!}. #{it.getMonth! + 1}. #{it.getFullYear!}"
