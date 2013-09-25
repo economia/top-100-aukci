@@ -18,7 +18,7 @@ window.drawSidebar = (item) ->
             ..append \h2
                 ..html -> "#{it.autor}, #{it.rok}"
             ..append \h3
-                ..html -> "#{it.kategorie}, #{it.rozmer}"
+                ..html -> "#{it.technika}, #{it.rozmer}"
             ..append \h4
                 ..html -> "#{formatPrice it.price} Kč, #{it.dum}, #{formatDate it.date}"
 
@@ -46,7 +46,7 @@ rowAssigner = (it, index) ->
     nazev     : it.nazev
     rok       : it.rok
     price     : +it.cena
-    technik   : it.technika
+    technika  : it.technika
     rozmer    : it.rozmer
     dum       : it.dum
     width     : +it.vyska
