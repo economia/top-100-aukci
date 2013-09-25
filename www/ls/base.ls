@@ -21,6 +21,10 @@ window.drawSidebar = (item) ->
                 ..html -> "#{it.technika}, #{it.rozmer}"
             ..append \h4
                 ..html -> "#{formatPrice it.price} Kč, #{it.id}. nejdražší<br />#{it.dum}, #{formatDate it.date}"
+            ..append \a
+                ..html "Dílo v databázi ART+"
+                ..attr \href (.link)
+                ..attr \target \_blank
 
 formatDate = ->
     "#{it.getDate!}. #{it.getMonth! + 1}. #{it.getFullYear!}"
@@ -49,6 +53,7 @@ rowAssigner = (it, index) ->
     technika  : it.technika
     rozmer    : it.rozmer
     dum       : it.dum
+    link      : it.link
     width     : +it.vyska
     height    : +it.sirka
     kategorie : kategorie[it.kategorie]
