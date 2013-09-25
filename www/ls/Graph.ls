@@ -33,7 +33,7 @@ window.Graph = class Graph
             ..range [@height, 0]
         @fillColor = d3.scale.ordinal!
             ..domain @categories
-            ..range <[ #E41A1C #377EB8 #4DAF4A #984EA3 #FF7F00 ]>
+            ..range <[ #F50F0F #FAE317 #0D7FBE #FFFFFF #000000 ]>
 
     draw: ->
         @drawDatapointSymbols!
