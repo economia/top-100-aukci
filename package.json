@@ -10,7 +10,7 @@
   "license": "BSD",
   "dependencies": {
     "stylus": "~0.37.0",
-    "uglify-js": "~2.4.0",
+    "uglify-js": "~3.6.7",
     "request": "~2.27.0",
     "async": "~0.2.9"
   }
